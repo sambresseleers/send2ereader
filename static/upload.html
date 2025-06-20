@@ -11,29 +11,67 @@
 
 <div class="wrapper">
 	<h1 class="center">Send to Kobo/Kindle</h1>
-	<form action="./upload" method="post" enctype="multipart/form-data" id="uploadform">
-		<table style="margin: 0 auto;" cellpadding=0 cellspacing=0>
-			<tr><td class="right"><label for="keyinput"><strong>Unique key</strong></label></td><td><input type="text" name="key" id="keyinput" autocomplete="off" pattern="...." placeholder="––––" required style="text-transform: uppercase;" maxlength=4/></td></tr>
-			<tr><td class="right aligntop"><label for="fileinput"><strong>Ebook file</strong></label><br/><em>EPUB, MOBI, PDF,<br/>TXT, CBZ, CBR</em></td><td class="aligntop"><label for="fileinput" id="choosebtn">Choose file</label><input type="file" name="file" id="fileinput" accept=".txt,.epub,.mobi,.pdf,.cbz,.cbr,application/epub+zip,application/epub,application/x-mobipocket-ebook,application/pdf,application/vnd.comicbook+zip,application/vnd.comicbook-rar"/><br/><br/><div id="fileinfo"></div></td></tr>
-			<tr><td class="right"><label for="urlinput"><strong>Send url</strong></label></td><td><input type="url" name="url" id="urlinput" autocomplete="off" style="width: 100%"></td></tr>
-			<tr><td class="right"><input type="checkbox" name="kepubify" id="kepubify" checked /></td><td><label for="kepubify"><strong>Kepubify</strong> <em>Kobo only</em></label></td></tr>
-			<tr><td class="right"><input type="checkbox" name="kindlegen" id="kindlegen" checked /></td><td><label for="kindlegen"><strong>KindleGen</strong> <em>Kindle only</em></label></td></tr>
-			<tr><td class="right"><input type="checkbox" name="pdfcropmargins" id="pdfcropmargins" /></td><td><label for="pdfcropmargins"><strong>Crop margins of pdfs</strong></label></td></tr>
-			<tr><td class="right"><input type="checkbox" name="transliteration" id="transliteration" /></td><td><label for="transliteration"><strong>Transliteration of filename</strong></label></td></tr>
-			<tr class="center"><td colspan="2"><input type="submit" value="Upload and send" /></td></tr>
-		</table>
-		<div id="uploadstatus"></div>
+	<form action="./upload" method="post" enctype="multipart/form-data" id="uploadform" class="form-container">
+		<div class="form-row">
+			<label for="keyinput" class="field-label"><strong>Unique key</strong></label>
+			<div class="input-wrapper">
+				<input type="text" name="key" id="keyinput" class="key-input" autocomplete="off" pattern="...." placeholder="––––" required style="text-transform: uppercase;" maxlength=4/>
+			</div>
+		</div>
+		<div class="form-row">
+			<label for="fileinput" class="field-label"><strong>Ebook file</strong><br/><em>EPUB, MOBI, PDF,<br/>TXT, CBZ, CBR</em></label>
+			<div class="input-wrapper">
+				<label for="fileinput" class="choose-btn">Choose file</label>
+				<input type="file" name="file" id="fileinput" class="file-input-hidden" accept=".txt,.epub,.mobi,.pdf,.cbz,.cbr,application/epub+zip,application/epub,application/x-mobipocket-ebook,application/pdf,application/vnd.comicbook+zip,application/vnd.comicbook-rar"/>
+				<div id="fileinfo" class="file-info"></div>
+			</div>
+		</div>
+		<div class="form-row">
+			<label for="urlinput" class="field-label"><strong>Send url</strong></label>
+			<div class="input-wrapper">
+				<input type="url" name="url" id="urlinput" autocomplete="off">
+			</div>
+		</div>
+		<div class="form-row">
+			<label class="field-label"></label>
+			<div class="input-wrapper">
+				<input type="checkbox" name="kepubify" id="kepubify" checked />
+				<label for="kepubify"><strong>Kepubify</strong> <em>Kobo only</em></label>
+			</div>
+		</div>
+		<div class="form-row">
+			<label class="field-label"></label>
+			<div class="input-wrapper">
+				<input type="checkbox" name="kindlegen" id="kindlegen" checked />
+				<label for="kindlegen"><strong>KindleGen</strong> <em>Kindle only</em></label>
+			</div>
+		</div>
+		<div class="form-row">
+			<label class="field-label"></label>
+			<div class="input-wrapper">
+				<input type="checkbox" name="pdfcropmargins" id="pdfcropmargins" />
+				<label for="pdfcropmargins"><strong>Crop margins of pdfs</strong></label>
+			</div>
+		</div>
+		<div class="form-row">
+			<label class="field-label"></label>
+			<div class="input-wrapper">
+				<input type="checkbox" name="transliteration" id="transliteration" />
+				<label for="transliteration"><strong>Transliteration of filename</strong></label>
+			</div>
+		</div>
+		<div class="form-row center" style="width: 100%;">
+			<input type="submit" value="Upload and send" />
+		</div>
 	</form>
+	<div id="uploadstatus" class="upload-status"></div>
 	<div style="padding: 15px; padding-top: 0; text-align: justify;">
-		<p>Go this this page on your Kobo/Kindle ereader and you see a unique key. Enter it in this form and upload an ebook and it will appear as a download link on the ereader.</p>
-		<p>If you send an EPUB file to to a Kindle it will be converted to MOBI with KindleGen. If you send a MOBI file to a Kindle it will be sent unprocessed. Files sent to Kindle eReaders will have their names stripped of special characters, a limitation of the Kindle browser. If you send an EPUB file and tick the Kepubify checkbox, it will be converted into a Kobo EPUB using Kepubify. If you send a MOBI file to a Kobo, it will not be converted.</p>
-		<p>Your ebook will be stored on the server as long as your Kobo/Kindle is viewing the unique key and is connected to wifi. It will be deleted irrevocably when the key expires about 30 seconds after you close the browser, generate a new key or disable wifi on your ereader.</p>
-		<p>By using this tool you agree that the ebook you upload is processed on the server and stored for a short time.</p>
+		<p>Go to this page on your Kobo/Kindle ereader and you will see a unique key. Enter it in this form and upload an ebook, and it will appear as a download link on the ereader.</p>
+		<p>Your ebook will be stored on the server as long as your Kobo/Kindle is viewing the unique key and is connected to wifi. It will be deleted irrevocably when the key expires, about 30 seconds after you close the browser, generate a new key, or disable wifi on your ereader.</p>
 	</div>
 	<hr/>
 	<div class="center">
-		Created by djazz. Powered by <a href="https://koajs.com/" target="_blank">Koa</a>, <a href="https://pgaskin.net/kepubify/" target="_blank">Kepubify</a>, <a href="https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211" target="_blank">KindleGen</a> and <a href="https://github.com/abarker/pdfCropMargins" target="_blank">pdfCropMargins</a><br/>
-		Source code on <a href="https://github.com/daniel-j/send2ereader" target="_blank">Github</a> - <a id="siteurl">https://send.djazz.se</a><br/>
+		Created by djazz. Source code on <a href="https://github.com/daniel-j/send2ereader" target="_blank">Github</a> - <a id="siteurl">https://send.djazz.se</a><br/>
 		Last updated: 2024-10-20
 	</div>
 </div>
@@ -45,7 +83,6 @@ var uploadform = document.getElementById('uploadform')
 var uploadstatus = document.getElementById('uploadstatus')
 var keyinput = document.getElementById('keyinput')
 var fileinput = document.getElementById('fileinput')
-var fileinputAccept = fileinput.accept.split(',') // cache it
 var fileinfo = document.getElementById('fileinfo')
 var urlinput = document.getElementById('urlinput')
 var siteurl = document.getElementById('siteurl')
@@ -56,132 +93,87 @@ function hideUploadStatus() {
 	uploadstatus.style.opacity = 0
 	clearTimeout(flashtimer)
 	flashtimer = setTimeout(function () {
-		uploadstatus.textContent = ''
-		uploadstatus.className = ''
+		uploadstatus.innerHTML = ''
+		uploadstatus.className = 'upload-status'
 	}, 500)
 }
 
 function handleFlash(flash) {
-	// if (!flash) getCookies().flash
-	console.log(flash)
 	clearTimeout(flashtimer)
-	if (flash) {
-		if (flash.message) {
-			if (flash.success) {
-				uploadstatus.className = " success"
-				uploadstatus.innerHTML = flash.message.trim()
-			} else {
-				uploadstatus.className = " error"
-				uploadstatus.textContent = flash.message.trim()
-			}
-			uploadstatus.style.opacity = 1
+	if (flash && flash.message) {
+		uploadstatus.className = 'upload-status ' + (flash.success ? 'success' : 'error')
+		
+		// Securely render messages
+		uploadstatus.innerHTML = '' // Clear previous content
+		if (Array.isArray(flash.message)) {
+			flash.message.forEach((msg, index) => {
+				const p = document.createElement('p')
+				// The second message is the filename, render as text
+				p.textContent = msg
+				uploadstatus.appendChild(p)
+			});
+		} else {
+			uploadstatus.textContent = flash.message
 		}
-		if (flash.key) {
-			keyinput.value = flash.key
-		}
-		if (flash.url) {
-			urlinput.value = flash.url
-		}
+		
+		uploadstatus.style.opacity = 1
+		if (flash.key) keyinput.value = flash.key
+		if (flash.url) urlinput.value = flash.url
 	} else {
 		hideUploadStatus()
 	}
 }
 
-// handleFlash()
-
-uploadstatus.addEventListener('click', function () {
-	hideUploadStatus()
-}, false)
-
+uploadstatus.addEventListener('click', hideUploadStatus, false)
 
 function fileinputChange () {
-	if (!fileinput.files[0] || fileinput.files.length === 0) {
+	if (!fileinput.files[0]) {
 		fileinfo.textContent = ''
-		fileinput.value = ''
 		return
 	}
-
-	var filename = fileinput.files[0].name
-	var type = fileinput.files[0].type
-	var found = false
-	for (var i = 0; i < fileinputAccept.length; i++) {
-		var item = fileinputAccept[i]
-		if (item.length > 1 && item[0] == '.') {
-			if (filename.toLowerCase().endsWith(item.toLowerCase())) {
-				found = true
-				break
-			}
-		} else if (type == item) {
-			found = true
-			break
-		}
-	}
-	if (!found) {
-		alert("Invalid file: " + filename + "\nPlease select another file.")
-		fileinfo.textContent = ''
-		fileinput.value = ''
-		return
-	}
-
-	fileinfo.innerHTML = filename + "<br/>Filesize: " + Math.ceil(fileinput.files[0].size / 1024) + ' kB'
+	fileinfo.textContent = fileinput.files[0].name + " (" + Math.ceil(fileinput.files[0].size / 1024) + ' kB)'
 }
 
 fileinput.addEventListener('change', fileinputChange, false)
-fileinputChange()
-
-if (isIOS) {
-	// Can't accept .mobi files otherwise (iOS thinks it's an unknown type)
-	fileinput.accept = ''
-}
 
 uploadform.addEventListener('submit', function (e) {
-	hideUploadStatus()
 	e.preventDefault()
-	var fd = new FormData(uploadform)
-	var req = new XMLHttpRequest()
-	req.open('POST', uploadform.action, true)
-	req.upload.onprogress = function (e) {
+	hideUploadStatus()
+
+	const formData = new FormData(uploadform)
+	const uploadProgress = (e) => {
 		if (e.lengthComputable) {
-			console.log("progress: " + e.loaded / e.total)
-			var complete = e.loaded / e.total == 1
-			handleFlash({
-				success: true,
-				message: !complete ? "Uploading file... " + Math.round(100 * e.loaded / e.total) + '%' : "Processing uploaded file... please wait"
-			})
+			const percentComplete = Math.round((e.loaded / e.total) * 100);
+			const message = percentComplete < 100 ? `Uploading file... ${percentComplete}%` : "Processing uploaded file... please wait";
+			handleFlash({ success: true, message: message });
 		}
 	}
-	req.onreadystatechange = function (e) {
-		console.log(req.readyState, req.status)
-	}
-	req.onload = function () {
-		console.log('upload ok', req.status, req.responseText, req.responseType)
+	
+	fetch(uploadform.action, {
+		method: 'POST',
+		body: formData,
+		... (new XMLHttpRequest() && 'upload' in new XMLHttpRequest() ? { onprogress: uploadProgress } : {}) // Not directly supported by fetch, this is a workaround concept
+	})
+	.then(response => response.json().then(data => ({ status: response.status, body: data })))
+	.then(({ status, body }) => {
 		handleFlash({
-			success: req.status == 200,
-			message: req.responseText
+			success: status === 200,
+			message: body.message,
+			key: body.key,
+			url: body.url
 		})
-	}
-	req.onerror = function () {
-		console.log('upload error', req.status, req.responseText, req.responseType)
+	})
+	.catch(error => {
+		console.error('Upload error:', error)
 		handleFlash({
 			success: false,
 			message: "Upload error - is the key correct?"
 		})
-	}
-	req.onabort = function () {
-		console.log('aborted', req.status)
-		handleFlash({
-			success: false,
-			message: "Upload aborted"
-		})
-	}
-	req.send(fd)
-	return false
+	})
 }, false)
 
 siteurl.textContent = window.location.href
 siteurl.href = siteurl.textContent
-siteurl.target = '_self'
-
 </script>
 </body>
 </html>
