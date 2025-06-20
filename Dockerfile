@@ -14,8 +14,8 @@ RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-l
     chmod +x /usr/local/bin/kepubify
 
 # Install KindleGen
-# Using the Internet Archive link as the official one is dead
-RUN wget http://web.archive.org/web/20190328114454/http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz -O kindlegen.tar.gz && \
+# The original Amazon and Internet Archive links are dead. Using a public mirror.
+RUN wget https://github.com/ssut/kindlegen/releases/download/v2.9/kindlegen_linux_2.6_i386_v2_9.tar.gz -O kindlegen.tar.gz && \
     tar -xzf kindlegen.tar.gz && \
     mv kindlegen /usr/local/bin/kindlegen && \
     rm kindlegen.tar.gz
