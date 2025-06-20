@@ -1,9 +1,11 @@
 name: Build and Publish Docker Image
 
 # This workflow runs on every push to the main branch
+# It can also be run manually from the Actions tab
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-and-push:
