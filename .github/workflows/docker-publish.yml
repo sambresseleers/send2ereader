@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          # Replace 'your-dockerhub-username' with your actual Docker Hub username
-          tags: your-dockerhub-username/send2ereader:latest, your-dockerhub-username/send2ereader:${{ github.sha }}
-          cache-from: type=registry,ref=your-dockerhub-username/send2ereader:buildcache
-          cache-to: type=registry,ref=your-dockerhub-username/send2ereader:buildcache,mode=max
+          # Replace 'sambresseleers' with your actual Docker Hub username
+          tags: sambresseleers/send2ereader:latest, sambresseleers/send2ereader:${{ github.sha }}
+          cache-from: type=registry,ref=sambresseleers/send2ereader:buildcache
+          cache-to: type=registry,ref=sambresseleers/send2ereader:buildcache,mode=max
