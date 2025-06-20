@@ -6,11 +6,11 @@ WORKDIR /usr/src/app
 
 # Install dependencies for kepubify, kindlegen, and pdfCropMargins
 # pdfCropMargins requires python and pip
-RUN apk add --no-cache python3 py3-pip wget unzip
+RUN apk add --no-cache python3 py3-pip wget tar
 
 # Install Kepubify
-# The release asset URL and name has changed. It's no longer a zip file.
-RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.2.0/kepubify-linux-amd64 -O /usr/local/bin/kepubify && \
+# Using the latest stable release URL to avoid 404 errors.
+RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-linux-64bit -O /usr/local/bin/kepubify && \
     chmod +x /usr/local/bin/kepubify
 
 # Install KindleGen
