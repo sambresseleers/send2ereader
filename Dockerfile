@@ -9,10 +9,9 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache python3 py3-pip wget unzip
 
 # Install Kepubify
-RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.2.0/kepubify-linux-64bit.zip -O kepubify.zip && \
-    unzip kepubify.zip && \
-    mv kepubify /usr/local/bin/kepubify && \
-    rm kepubify.zip
+# The release asset URL and name has changed. It's no longer a zip file.
+RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.2.0/kepubify-linux-amd64 -O /usr/local/bin/kepubify && \
+    chmod +x /usr/local/bin/kepubify
 
 # Install KindleGen
 # Using the Internet Archive link as the official one is dead
