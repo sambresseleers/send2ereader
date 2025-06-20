@@ -4,7 +4,7 @@ name: Build and Publish Docker Image
 # It can also be run manually from the Actions tab
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
